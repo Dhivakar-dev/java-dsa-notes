@@ -1,4 +1,4 @@
-/* leetcode 953
+package arrays;/* leetcode 953
 * Verifying an Alien Dictionary*/
 
 
