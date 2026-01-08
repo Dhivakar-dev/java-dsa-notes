@@ -1,6 +1,6 @@
 # Java Collections Cheatsheet with Explanation
 
-Java Collections Framework provides a set of interfaces and classes for storing and manipulating groups of data as a single unit. Here’s a handy cheatsheet covering the most important collections, with brief explanations.
+Java Collections Framework provides a set of interfaces and classes for storing and manipulating groups of data as a single unit. Here's a handy cheatsheet covering the most important collections, with examples and explanations.
 
 ---
 
@@ -66,7 +66,28 @@ String next = queue.poll(); // "first"
 
 ---
 
-## 4. Map
+## 4. Deque
+
+- **Double-Ended Queue, supports insertion/removal at both ends.**
+- Common Implementations: `ArrayDeque`, `LinkedList`
+
+**Example:**
+```java
+Deque<String> deque = new ArrayDeque<>();
+deque.addFirst("first");
+deque.addLast("last");
+String front = deque.pollFirst(); // "first"
+String back = deque.pollLast();   // "last"
+```
+
+| Implementation   | Features                                   |
+|------------------|--------------------------------------------|
+| ArrayDeque       | Fast, resizable array, preferred choice    |
+| LinkedList       | Implements both Queue and Deque            |
+
+---
+
+## 5. Map
 
 - **Key-value pairs, keys are unique.**
 - Common Implementations: `HashMap`, `LinkedHashMap`, `TreeMap`, `Hashtable`
@@ -88,16 +109,18 @@ int val = map.get("a"); // 1
 
 ---
 
-## 5. Useful Methods
+## 6. Useful Methods
 
 - `add(E e)`, `remove(Object o)`, `size()`, `contains(Object o)`  
   (for List, Set, Queue)
+- `addFirst(E e)`, `addLast(E e)`, `pollFirst()`, `pollLast()`  
+  (for Deque)
 - `put(K key, V value)`, `get(K key)`, `keySet()`, `values()`  
   (for Map)
 
 ---
 
-## 6. Iteration Examples
+## 7. Iteration Examples
 
 **For-each Loop:**
 ```java
@@ -123,13 +146,13 @@ for(Map.Entry<String, Integer> entry : map.entrySet()) {
 
 ---
 
-## 7. Synchronization
+## 8. Synchronization
 
 - **Not thread-safe by default.** Use `Collections.synchronizedList(list)` or concurrent collections like `ConcurrentHashMap` for thread safety.
 
 ---
 
-## 8. Comparable vs Comparator
+## 9. Comparable vs Comparator
 
 - **Comparable**: Implement in your class (`compareTo` method) for natural ordering.
 - **Comparator**: Pass custom ordering logic to collections or sorting methods.
