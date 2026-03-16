@@ -2,45 +2,43 @@ package arrays;//leetcode 128
 
 
 import java.util.HashSet;
+import java.util.Set;
 
 public class LongestConsecutiveSequence {
 
     public int longestConsecutive(int[] nums) {
 
-        if(nums.length == 0)
-        {
+        if(nums.length == 0) {
             return 0;
         }
 
-        HashSet<Integer> numSet = new HashSet<>();
+        Set<Integer> set = new HashSet<>();
 
-        for(int i=0; i<nums.length; i++)
-        {
-            numSet.add(nums[i]);
+        for( int num: nums) {
+            set.add(num);
         }
 
-        int longestSub = 1;
+        int lcs = 1;
 
-        for(int num : numSet)
-        {
-            if(numSet.contains(num-1))
-            {
-                continue; //till we find the start of a sequence
-            }else{
-                int currNum = num; //start of a sequence
+        for(int num: set) {
+            if(set.contains(num-1)) {
+                continue;
+            } else {
+                int currNum = num;
                 int currSub = 1;
-                while(numSet.contains(currNum+1))
-                {
+
+                while( set.contains(currNum+1)) {
                     currNum++;
                     currSub++;
                 }
-                longestSub = Math.max(currSub,longestSub);
+
+                lcs =  Math.max(lcs,currSub);
             }
+
+
         }
 
-
-
-        return longestSub;
+        return lcs;
 
     }
 }
