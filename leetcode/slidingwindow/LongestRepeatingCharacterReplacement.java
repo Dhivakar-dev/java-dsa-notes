@@ -3,24 +3,20 @@ package slidingwindow;
 public class LongestRepeatingCharacterReplacement {
     public int characterReplacement(String s, int k) {
 
+        int[] map = new int[26];
+        int l=0;
+        int r=0;
+        int ans=0;
+        int maxFq=0;
 
-        int[] frequency = new int[26];
-
-        int left = 0;
-        int ans = 0;
-        int maxFq = 0;
-
-        for(int right = 0; right<s.length(); right++)
-        {
-            maxFq = Math.max(maxFq,++frequency[s.charAt(right)-'A']);
-            if(right-left+1-maxFq>k)
-            {
-                frequency[s.charAt(left)-'A']--;
-                left++;
-
+        for(r=0; r<s.length(); r++) {
+            maxFq = Math.max(maxFq,++map[s.charAt(r)-'A']);
+            if(r-l+1-maxFq>k) {
+                map[s.charAt(l)-'A']--;
+                l++;
             }
 
-            ans = Math.max(ans,right-left+1);
+            ans = Math.max(ans, r-l+1);
         }
 
         return ans;
